@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UniCanteen - Order your university meals online.">
+    <title>UniCanteen | University Food Ordering</title>
+</head>
+<script type="module" src="/src/cart-count.js"></script>
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+        <a href="#" class="logo">
+            Uni<span>Canteen</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#canteens">Canteens</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="/cart.html" class="nav-cart-link">
+                My Cart <span class="cart-count">0</span>
+            </a>
+        </nav>
+
+        <a href="/login.html" class="login-button">Student Sign In</a>
+    </header>
+
+
+    <!-- Hero Section -->
+    <main>
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+                <p class="hero-label">UNIVERSITY FOOD ORDERING</p>
+
+                <h1>
+                    Good food.<br>
+                    Less waiting.
+                </h1>
+
+                <p class="hero-description">
+                    Order your favourite meals online and
+                    collect them at your university canteen.
+                    Spend less time in queues and more time
+                    doing what matters.
+                </p>
+
+                <a href="#canteens" class="primary-button">
+                    Explore Canteens →
+                </a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="food-illustration">🍱</div>
+                <p>Fresh meals, easier ordering.</p>
+            </div>
+
+        </section>
+
+
+        <!-- Canteen Selection -->
+        <section class="canteen-section" id="canteens">
+
+            <div class="section-heading">
+                <p class="section-label">CHOOSE YOUR DESTINATION</p>
+                <h2>Where would you like to order from?</h2>
+                <p>Select a canteen to explore its available meals.</p>
+            </div>
+
+            <div class="canteen-grid">
+
+                <article class="canteen-card">
+                    <div class="canteen-icon">🍛</div>
+                    <p class="canteen-type">ON-CAMPUS</p>
+                    <h3>Kalderama</h3>
+                    <p>Explore meals available at Kalderama canteen.</p>
+                    <a href="/menu.html?canteen=kalderama" class="canteen-button">
+                      View Menu →
+                    </a>
+                    
+
+    
+
+                </article>
+
+                <article class="canteen-card">
+                    <div class="canteen-icon">🍜</div>
+                    <p class="canteen-type">ON-CAMPUS</p>
+                    <h3>Hilton</h3>
+                    <p>Discover the food options available at Hilton.</p>
+                    <a href="/menu.html?canteen=hilton" class="canteen-button">
+                      View Menu →
+                    </a>
+                </article>
+
+                <article class="canteen-card">
+                    <div class="canteen-icon">🥪</div>
+                    <p class="canteen-type">OFF-CAMPUS</p>
+                    <h3>Other Food Outlets</h3>
+                    <p>Explore food options from outside the university.</p>
+                    <a href="/menu.html?canteen=off-campus" class="canteen-button">
+                      View Outlets →
+                    </a>
+                    
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- How It Works -->
+        <section class="how-section" id="how-it-works">
+            <div class="section-heading">
+                <p class="section-label">SIMPLE AND CONVENIENT</p>
+                <h2>How UniCanteen works</h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step">
+                    <span>01</span>
+                    <h3>Choose a canteen</h3>
+                    <p>Select where you want to order your meal.</p>
+                </div>
+
+                <div class="step">
+                    <span>02</span>
+                    <h3>Place your order</h3>
+                    <p>Choose your favourite meals and confirm your order.</p>
+                </div>
+
+                <div class="step">
+                    <span>03</span>
+                    <h3>Collect your meal</h3>
+                    <p>Arrive at your assigned pickup time and enjoy.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <a href="#" class="logo">Uni<span>Canteen</span></a>
+        <p>Making university dining easier.</p>
+        <p>© 2026 UniCanteen. All rights reserved.</p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+
+</body>
+</html>

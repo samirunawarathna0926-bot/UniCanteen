@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Choose a Canteen | UniCanteen</title>
+
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header class="navbar">
+
+        <a href="/" class="logo">
+            Uni<span>Canteen</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/canteens.html">Menu</a>
+
+            <a href="/cart.html" class="nav-cart-link">
+                My Cart <span class="cart-count">0</span>
+            </a>
+        </nav>
+
+        <a href="/login.html" class="login-button">
+            Student Sign In
+        </a>
+
+    </header>
+
+
+    <main>
+
+        <!-- Canteen Selection -->
+        <section class="canteen-section">
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    CHOOSE YOUR DESTINATION
+                </p>
+
+                <h2>Where would you like to order from?</h2>
+
+                <p>
+                    Select a canteen to explore its available meals.
+                </p>
+
+            </div>
+
+
+            <div class="canteen-grid">
+
+                <!-- Kalderama -->
+                <article class="canteen-card">
+
+                    <div class="canteen-icon">🍛</div>
+
+                    <p class="canteen-type">ON-CAMPUS</p>
+
+                    <h3>Kalderama</h3>
+
+                    <p>
+                        Explore meals available at Kalderama canteen.
+                    </p>
+
+                    <a href="/menu.html?canteen=kalderama"
+                       class="canteen-button">
+                        View Menu →
+                    </a>
+
+                </article>
+
+
+                <!-- Hilton -->
+                <article class="canteen-card">
+
+                    <div class="canteen-icon">🍜</div>
+
+                    <p class="canteen-type">ON-CAMPUS</p>
+
+                    <h3>Hilton</h3>
+
+                    <p>
+                        Discover the food options available at Hilton.
+                    </p>
+
+                    <a href="/menu.html?canteen=hilton"
+                       class="canteen-button">
+                        View Menu →
+                    </a>
+
+                </article>
+
+
+                <!-- Other Food Outlets -->
+                <article class="canteen-card">
+
+                    <div class="canteen-icon">🥪</div>
+
+                    <p class="canteen-type">OFF-CAMPUS</p>
+
+                    <h3>Other Food Outlets</h3>
+
+                    <p>
+                        Explore food options from outside the university.
+                    </p>
+
+                    <a href="/menu.html?canteen=off-campus"
+                       class="canteen-button">
+                        View Outlets →
+                    </a>
+
+                </article>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <a href="/" class="logo">
+            Uni<span>Canteen</span>
+        </a>
+
+        <p>Making university dining easier.</p>
+
+        <p>© 2026 UniCanteen. All rights reserved.</p>
+
+    </footer>
+
+
+    <script type="module" src="/src/cart-count.js"></script>
+
+</body>
+</html>

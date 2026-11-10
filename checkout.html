@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | UniCanteen</title>
+
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <header class="navbar">
+        <a href="/" class="logo">Uni<span>Canteen</span></a>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/canteens.html">Menu</a>
+            <a href="/cart.html" class="nav-cart-link">
+                My Cart <span class="cart-count">0</span>
+            </a>
+        </nav>
+
+        <a href="/login.html" class="login-button">
+            Student Sign In
+        </a>
+    </header>
+
+
+    <!-- Checkout content -->
+    <main class="checkout-page">
+
+        <section class="checkout-heading">
+            <h1>Checkout</h1>
+            <p>Review your order before proceeding.</p>
+        </section>
+
+<section class="student-details">
+
+    <h2>Student Details</h2>
+    <p>Please provide your details for this order.</p>
+
+    <div class="student-form">
+
+        <div class="form-group">
+            <label for="student-name">Full Name</label>
+            <input
+                type="text"
+                id="student-name"
+                placeholder="Enter your full name"
+                required
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="registration-number">
+                University Registration Number
+            </label>
+            <input
+                type="text"
+                id="registration-number"
+                placeholder="Enter your registration number"
+                required
+            >
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Payment Method -->
+<section class="payment-section">
+
+    <h2>Payment Method</h2>
+    <p>Choose how you would like to pay for your order.</p>
+
+    <div class="payment-options">
+
+        <label class="payment-option">
+            <input
+                type="radio"
+                name="payment-method"
+                value="cash"
+            >
+
+            <div>
+                <h3>Cash on Collection</h3>
+                <p>Pay when you collect your meal.</p>
+            </div>
+        </label>
+
+        <label class="payment-option">
+            <input
+                type="radio"
+                name="payment-method"
+                value="online"
+            >
+
+            <div>
+                <h3>Online Payment</h3>
+                <p>Pay online before collecting your meal.</p>
+            </div>
+        </label>
+
+    </div>
+
+</section>
+
+        <section class="checkout-content">
+
+            <!-- Order details will appear here -->
+            <div id="checkout-items">
+            </div>
+
+            <!-- Order summary -->
+            <div id="checkout-summary">
+
+                <h2>Order Summary</h2>
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">LKR 0.00</span>
+                </div>
+
+                <div class="summary-row">
+                    <span>Total</span>
+                    <strong id="checkout-total">LKR 0.00</strong>
+                </div>
+
+                <button id="confirm-order-button" disabled>
+                    Confirm Order
+                </button>
+
+                <a href="/cart.html" class="continue-shopping">
+                    Back to Cart
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="/src/cart-count.js"></script>
+    <script type="module" src="/src/checkout.js"></script>
+
+</body>
+</html>

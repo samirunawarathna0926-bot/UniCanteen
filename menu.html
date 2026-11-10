@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Menu | UniCanteen</title>
+
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="/" class="logo">Uni<span>Canteen</span></a>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/canteens.html">Menu</a>
+            <a href="/cart.html" class="nav-cart-link">
+                My Cart <span class="cart-count">0</span>
+            </a>
+        </nav>
+
+        <a href="/login.html" class="login-button">
+            Student Sign In
+        </a>
+    </header>
+
+    <main>
+        <section class="canteen-section">
+
+            <div class="section-heading">
+                <p class="section-label">FRESH AND DELICIOUS</p>
+
+                <h2 id="canteen-title">
+                    Explore Our Menu
+                </h2>
+
+                <p>
+                    Choose your favourite meals and order online.
+                </p>
+            </div>
+
+            <!-- Food outlets will appear here -->
+            <div id="outlet-container"></div>
+
+<!-- Food categories will appear here -->
+            <div id="category-container"></div>
+
+<!-- Meal cards will appear here -->
+            <div id="menu-container"></div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="/" class="logo">Uni<span>Canteen</span></a>
+        <p>Making university dining easier.</p>
+    </footer>
+
+
+
+
+
+<script type="module" src="/src/cart-count.js"></script>
+<script type="module" src="/src/menu.js"></script>
+<script type="module" src="/src/menu.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Cart | UniCanteen</title>
+
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <header class="navbar">
+
+        <a href="/" class="logo">
+            Uni<span>Canteen</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/menu.html">Menu</a>
+            <a href="/cart.html" class="nav-cart-link">
+                My Cart <span class="cart-count">0</span>
+            </a>
+        </nav>
+
+        <a href="/login.html" class="login-button">
+            Student Sign In
+        </a>
+
+    </header>
+
+
+    <!-- Cart section -->
+    <main class="cart-page">
+
+        <section class="cart-heading">
+
+            <h1>My Shopping Cart</h1>
+
+            <p>Review your selected meals before checkout.</p>
+
+        </section>
+
+
+        <!-- Cart items will appear here -->
+        <div id="cart-container">
+
+        </div>
+
+
+        <!-- Cart summary -->
+        <section id="cart-summary">
+
+            <h2>Order Summary</h2>
+
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="cart-subtotal">LKR 0.00</span>
+            </div>
+
+            <div class="summary-row">
+                <span>Total</span>
+                <strong id="cart-total">LKR 0.00</strong>
+            </div>
+
+            <button id="checkout-button">
+                Proceed to Checkout
+            </button>
+
+            <a href="/canteens.html" class="continue-shopping">
+                Continue Shopping
+            </a>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="/src/cart-count.js"></script>
+    <script type="module" src="/src/menu.js"></script>
+    <script type="module" src="/src/cart.js"></script>
+
+</body>
+
+</html>

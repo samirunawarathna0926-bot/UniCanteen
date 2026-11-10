@@ -1,0 +1,131 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Order Confirmation | UniCanteen</title>
+
+    <link rel="stylesheet" href="/src/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation bar -->
+    <header class="navbar">
+
+        <a href="/" class="logo">
+            Uni<span>Canteen</span>
+        </a>
+
+        <nav class="nav-links">
+            <a href="/">Home</a>
+            <a href="/canteens.html">Menu</a>
+
+            <a href="/cart.html" class="nav-cart-link">
+                My Cart <span class="cart-count">0</span>
+            </a>
+        </nav>
+
+        <a href="/login.html" class="login-button">
+            Student Sign In
+        </a>
+
+    </header>
+
+
+    <!-- Confirmation page -->
+    <main class="confirmation-page">
+
+        <!-- Success message -->
+        <section class="confirmation-success">
+
+            <div class="success-icon">✓</div>
+
+            <h1>Order Confirmed!</h1>
+
+            <p>
+                Thank you for ordering with UniCanteen.
+                Your order has been successfully placed.
+            </p>
+
+            <p class="order-reference">
+                Order Reference:
+                <strong id="order-reference">Loading...</strong>
+            </p>
+
+        </section>
+
+
+        <!-- Student details -->
+        <section class="confirmation-card">
+
+            <h2>Student Information</h2>
+
+            <div class="confirmation-row">
+                <span>Student Name</span>
+                <strong id="confirmed-student-name">-</strong>
+            </div>
+
+            <div class="confirmation-row">
+                <span>Registration Number</span>
+                <strong id="confirmed-registration">-</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Ordered meals -->
+        <section class="confirmation-card">
+
+            <h2>Order Details</h2>
+
+            <div id="confirmed-order-items">
+                Loading order details...
+            </div>
+
+        </section>
+
+
+        <!-- Payment information -->
+        <section class="confirmation-card">
+
+            <h2>Payment Information</h2>
+
+            <div class="confirmation-row">
+                <span>Payment Method</span>
+                <strong id="confirmed-payment">-</strong>
+            </div>
+
+            <div class="confirmation-row">
+                <span>Order Total</span>
+                <strong id="confirmed-total">LKR 0.00</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Navigation buttons -->
+        <div class="confirmation-actions">
+
+            <a href="/" class="home-button">
+                Back to Home
+            </a>
+
+            <a href="/canteens.html" class="menu-button">
+                Continue Ordering
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <script type="module" src="/src/cart-count.js"></script>
+    <script type="module" src="/src/confirmation.js"></script>
+
+</body>
+
+</html>
