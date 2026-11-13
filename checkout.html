@@ -70,6 +70,7 @@
 
 </section>
 
+
 <!-- Payment Method -->
 <section class="payment-section">
 
@@ -84,9 +85,8 @@
                 name="payment-method"
                 value="cash"
             >
-
             <div>
-                <h3>Cash on Collection</h3>
+                <h3>💵 Cash on Collection</h3>
                 <p>Pay when you collect your meal.</p>
             </div>
         </label>
@@ -95,56 +95,34 @@
             <input
                 type="radio"
                 name="payment-method"
-                value="online"
+                value="bank-transfer"
             >
-
             <div>
-                <h3>Online Payment</h3>
-                <p>Pay online before collecting your meal.</p>
+                <h3>🏦 Bank Transfer</h3>
+                <p>Pay through a bank transfer.</p>
+            </div>
+        </label>
+
+        <label class="payment-option">
+            <input
+                type="radio"
+                name="payment-method"
+                value="card"
+            >
+            <div>
+                <h3>💳 Card Payment</h3>
+                <p>Pay using a debit or credit card.</p>
             </div>
         </label>
 
     </div>
 
+    <!-- Dynamic payment information -->
+    <div id="payment-details" class="payment-details" aria-live="polite">
+    </div>
+
 </section>
 
-        <section class="checkout-content">
-
-            <!-- Order details will appear here -->
-            <div id="checkout-items">
-            </div>
-
-            <!-- Order summary -->
-            <div id="checkout-summary">
-
-                <h2>Order Summary</h2>
-
-                <div class="summary-row">
-                    <span>Subtotal</span>
-                    <span id="checkout-subtotal">LKR 0.00</span>
-                </div>
-
-                <div class="summary-row">
-                    <span>Total</span>
-                    <strong id="checkout-total">LKR 0.00</strong>
-                </div>
-
-                <button id="confirm-order-button" disabled>
-                    Confirm Order
-                </button>
-
-                <a href="/cart.html" class="continue-shopping">
-                    Back to Cart
-                </a>
-
-            </div>
-
-        </section>
-
-    </main>
-
-    <script type="module" src="/src/cart-count.js"></script>
-    <script type="module" src="/src/checkout.js"></script>
 
 </body>
 </html>

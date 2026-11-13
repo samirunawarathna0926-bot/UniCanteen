@@ -224,14 +224,55 @@ registrationInput.addEventListener(
 
 // Listen for payment selection
 
+const paymentDetails =
+    document.querySelector("#payment-details");
+
+function updatePaymentDetails() {
+
+    const selectedPayment = document.querySelector(
+        'input[name="payment-method"]:checked'
+    );
+
+    if (!selectedPayment) {
+        paymentDetails.innerHTML = "";
+        return;
+    }
+
+    const paymentInformation = {
+
+        cash: `
+            <h3>Cash on Collection</h3>
+            <p>Pay in cash when you collect your meal. No online payment is required.</p>
+        `,
+
+        "bank-transfer": `
+            <h3>Bank Transfer – Demonstration</h3>
+            <p>Bank transfer is not configured in this prototype. No real transfer is required.</p>
+        `,
+
+        card: `
+            <h3>Card Payment – Demonstration</h3>
+            <p>No card details are required. This prototype does not process real payments.</p>
+        `
+
+    };
+
+    paymentDetails.innerHTML =
+        paymentInformation[selectedPayment.value] || "";
+
+}
+
+
+// Update information when payment method changes
+
 document.querySelectorAll(
     'input[name="payment-method"]'
 ).forEach(payment => {
 
-    payment.addEventListener(
-        "change",
-        updateConfirmButton
-    );
+    payment.addEventListener("change", () => {
+        updatePaymentDetails();
+        updateConfirmButton();
+    });
 
 });
 
@@ -254,10 +295,14 @@ confirmButton.addEventListener("click", function() {
         'input[name="payment-method"]:checked'
     );
 
-    const paymentName =
-        selectedPayment.value === "cash"
-            ? "Cash on Collection"
-            : "Online Payment";
+    const paymentNames = {
+    cash: "Cash on Collection",
+    "bank-transfer": "Bank Transfer (Demo)",
+    card: "Card Payment (Demo)"
+};
+
+const paymentName =
+    paymentNames[selectedPayment.value];
 
 
     // Get student information
@@ -303,6 +348,10 @@ confirmButton.addEventListener("click", function() {
         registrationNumber: registrationNumber,
 
         paymentMethod: paymentName,
+        paymentStatus:
+            selectedPayment.value === "cash"
+                ? "Payment due on collection"
+                : "Demonstration only - no payment processed",
 
         items: cart.map(item => {
 
