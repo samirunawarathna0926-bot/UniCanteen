@@ -25,6 +25,10 @@ const registrationElement =
 const paymentElement =
     document.querySelector("#confirmed-payment");
 
+const paymentStatusElement = 
+    document.querySelector("#confirmed-payment-status");
+
+
 const totalElement =
     document.querySelector("#confirmed-total");
 
@@ -64,6 +68,9 @@ if (!order) {
     // 6. DISPLAY PAYMENT METHOD
 
     paymentElement.textContent = order.paymentMethod;
+
+    paymentStatusElement.textContent =
+        order.paymentStatus || "Not specified";
 
 
     // 7. DISPLAY ORDERED MEALS
