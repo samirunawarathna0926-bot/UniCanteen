@@ -1,4 +1,4 @@
-
+import { recordCanteenOrders } from "./canteen-demand.js";
 // ==================================
 // UNICANTEEN - CHECKOUT FUNCTIONALITY
 // ==================================
@@ -384,6 +384,9 @@ const paymentName =
             "unicanteenLastOrder",
             JSON.stringify(order)
         );
+
+        // Update canteen demand counters
+        recordCanteenOrders(order.items);
 
         // Clear shopping cart only after saving
 

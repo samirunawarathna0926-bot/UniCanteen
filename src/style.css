@@ -1183,3 +1183,254 @@ button {
     }
 
 }
+
+/* ===== UNICANTEEN MOBILE IMPROVEMENTS ===== */
+
+@media (max-width: 600px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .navbar {
+    height: auto;
+    min-height: 70px;
+    padding: 14px 5%;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .login-button {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 45px 6%;
+    gap: 30px;
+  }
+
+  .hero h1 {
+    font-size: clamp(36px, 10vw, 48px);
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .hero-visual {
+    max-width: 100%;
+    height: 220px;
+    border-radius: 20px;
+  }
+
+  .food-illustration {
+    font-size: 90px;
+  }
+
+  .canteen-section,
+  .how-section {
+    padding: 45px 6%;
+  }
+
+  .section-heading {
+    margin-bottom: 30px;
+  }
+
+  .canteen-card {
+    padding: 25px 22px;
+  }
+
+  .canteen-card h3 {
+    font-size: 21px;
+  }
+
+  .step {
+    padding: 24px;
+  }
+
+  .footer {
+    padding: 35px 6%;
+  }
+
+  #category-container {
+    gap: 8px;
+    margin: 20px 0;
+  }
+
+  .category-button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  #menu-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+  }
+
+  .meal-image {
+    height: 130px;
+  }
+
+  .meal-details {
+    padding: 12px;
+  }
+
+  .meal-details h3 {
+    font-size: 15px;
+  }
+
+  .meal-price {
+    font-size: 16px;
+  }
+
+  .add-cart-button {
+    padding: 12px 8px;
+  }
+
+  .cart-page,
+  .checkout-page,
+  .confirmation-page {
+    margin: 30px auto;
+    padding: 0 5%;
+  }
+
+  .cart-heading h1,
+  .checkout-heading h1 {
+    font-size: 27px;
+  }
+
+  .cart-item {
+    padding: 17px;
+    gap: 14px;
+  }
+
+  #cart-summary,
+  #checkout-summary {
+    padding: 20px;
+  }
+
+  .student-details,
+  .payment-section {
+    padding: 18px;
+  }
+
+  .confirmation-success {
+    padding: 28px 18px;
+  }
+
+  .confirmation-card {
+    padding: 18px;
+  }
+
+  .confirmation-item {
+    flex-wrap: wrap;
+  }
+
+  .auth-page {
+    padding: 25px 5%;
+  }
+
+  .auth-card {
+    padding: 23px 18px;
+  }
+}
+
+/* Prevent elements from exceeding screen width */
+
+img {
+  max-width: 100%;
+}
+
+input,
+select,
+textarea {
+  max-width: 100%;
+}
+
+/* ==================================
+   MOBILE NAVIGATION
+================================== */
+
+.mobile-menu-toggle {
+    display: none;
+}
+
+@media (max-width: 600px) {
+
+    .navbar {
+        position: relative;
+        flex-wrap: wrap;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        background: transparent;
+        border: none;
+        color: inherit;
+        font-size: 28px;
+        cursor: pointer;
+    }
+
+    .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        padding: 12px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 12px 16px;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    .nav-links a:hover {
+        background: rgba(128, 128, 128, 0.12);
+    }
+
+    .nav-cart-link {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}@media (max-width: 900px) {
+    .navbar { height: auto; min-height: 70px; padding: 12px 5%; flex-wrap: wrap; gap: 10px; }
+    .navbar .logo { margin-right: auto; }
+    .mobile-menu-toggle { display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; background: transparent; color: var(--dark-green); font-size: 28px; border-radius: 8px; }
+    .navbar .login-button { padding: 9px 12px; font-size: 13px; }
+    .navbar .nav-links { order: 1; display: none; flex: 0 0 100%; flex-direction: column; align-items: stretch; gap: 4px; padding: 8px 0; }
+    .navbar .nav-links.active { display: flex; }
+    .navbar .nav-links a { display: block; min-height: 44px; padding: 10px 12px; font-size: 16px; border-radius: 8px; }
+}
+@media (max-width: 600px) {
+    body { overflow-x: visible; }
+    #menu-container { grid-template-columns: minmax(0, 1fr); }
+    .meal-image { height: 180px; }
+    .meal-details { padding: 16px; }
+    .extra-option, .cart-extra-control, .cart-item-actions, .summary-row { flex-wrap: wrap; }
+    .quantity-button { width: 44px; height: 44px; }
+    .extra-quantity, .cart-extra-quantity { min-height: 44px; font-size: 16px; }
+    .remove-button { min-height: 44px; }
+    .checkout-content { grid-template-columns: minmax(0, 1fr); }
+    .checkout-content > *, .cart-item-details, .form-group { min-width: 0; }
+    .form-group input { font-size: 16px; }
+    .confirmation-row strong, .confirmation-item, .order-reference { overflow-wrap: anywhere; }
+}

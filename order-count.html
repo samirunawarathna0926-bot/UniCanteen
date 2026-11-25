@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UniCanteen - Order Monitor</title>
 
-    <style>
+    <link rel="stylesheet" href="/src/style.css">
+<style>
         * {
             box-sizing: border-box;
         }
@@ -14,23 +15,23 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f1f8f f3;
+            
             background: #f1f8f3;
             color: #203b2b;
         }
 
-        header {
+        .monitor-header {
             background: #234d35;
             color: white;
             padding: 22px 40px;
         }
 
-        header h1 {
+        .monitor-header h1 {
             margin: 0;
             font-size: 26px;
         }
 
-        header p {
+        .monitor-header p {
             margin: 8px 0 0;
             color: #d8e9dc;
         }
@@ -132,7 +133,7 @@
             font-weight: bold;
         }
 
-        .footer {
+        .footer { background: transparent; padding: 0;
             text-align: center;
             color: #7b8980;
             margin-top: 30px;
@@ -144,7 +145,7 @@
                 grid-template-columns: 1fr;
             }
 
-            header {
+            .monitor-header {
                 padding: 20px;
             }
         }
@@ -152,7 +153,8 @@
 </head>
 
 <body>
-    <header>
+    <header class="navbar"><a href="/" class="logo">Uni<span>Canteen</span></a><button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation">☰</button>
+<nav class="nav-links" id="main-navigation"><a href="/">Home</a><a href="/canteens.html">Menu</a><a href="/order-count.html">Order Count</a><a href="/cart.html" class="nav-cart-link">My Cart <span class="cart-count">0</span></a></nav></header><header class="monitor-header">
         <h1>UniCanteen</h1>
         <p>Canteen Order Monitoring Dashboard</p>
     </header>
@@ -244,5 +246,7 @@
 
         window.addEventListener("storage", updateDashboard);
     </script>
+<script type="module" src="/src/cart-count.js"></script>
+<script type="module" src="/src/mobile-nav.js"></script>
 </body>
 </html>

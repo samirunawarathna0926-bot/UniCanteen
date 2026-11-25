@@ -20,10 +20,12 @@
             Uni<span>Canteen</span>
         </a>
 
-        <nav class="nav-links">
+        <button class="mobile-menu-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="main-navigation">☰</button>
+<nav class="nav-links" id="main-navigation">
             <a href="/">Home</a>
-            <a href="/menu.html">Menu</a>
-            <a href="/cart.html" class="nav-cart-link">
+            <a href="/canteens.html">Menu</a>
+            <a href="/order-count.html">Order Count</a>
+<a href="/cart.html" class="nav-cart-link">
                 My Cart <span class="cart-count">0</span>
             </a>
         </nav>
@@ -83,6 +85,7 @@
     <script type="module" src="/src/cart-count.js"></script>
     <script type="module" src="/src/cart.js"></script>
 
+<script type="module" src="/src/mobile-nav.js"></script>
 </body>
 
 </html>
