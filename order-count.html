@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniCanteen - Order Monitor</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f8f f3;
+            background: #f1f8f3;
+            color: #203b2b;
+        }
+
+        header {
+            background: #234d35;
+            color: white;
+            padding: 22px 40px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+
+        header p {
+            margin: 8px 0 0;
+            color: #d8e9dc;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 35px auto;
+            padding: 20px;
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .top h2 {
+            margin: 0;
+        }
+
+        .back {
+            text-decoration: none;
+            background: #234d35;
+            color: white;
+            padding: 11px 18px;
+            border-radius: 8px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 3px 14px #0000000d;
+            border: 1px solid #e1ebe3;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 23px;
+        }
+
+        .count {
+            font-size: 42px;
+            font-weight: bold;
+            margin: 15px 0 5px;
+            color: #287344;
+        }
+
+        .sub {
+            color: #718078;
+            font-size: 14px;
+        }
+
+        .progress {
+            background: #e4eee6;
+            height: 12px;
+            border-radius: 20px;
+            overflow: hidden;
+            margin: 20px 0 12px;
+        }
+
+        .bar {
+            background: #398653;
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .status {
+            font-weight: bold;
+            color: #398653;
+        }
+
+        .high {
+            color: #c05b18;
+        }
+
+        .badge {
+            display: inline-block;
+            background: #fff0df;
+            color: #b45a16;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .timer {
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        .footer {
+            text-align: center;
+            color: #7b8980;
+            margin-top: 30px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 650px) {
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            header {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>UniCanteen</h1>
+        <p>Canteen Order Monitoring Dashboard</p>
+    </header>
+
+    <main>
+        <div class="top">
+            <h2>Order Count Monitor</h2>
+            <a class="back" href="index.html">← Back to Ordering</a>
+        </div>
+
+        <div class="cards">
+            <div class="card" id="kalderama-card">
+                <h3>Kalderama</h3>
+                <div class="count" id="kalderama-count">0 / 40</div>
+                <div class="sub">Confirmed orders</div>
+                <div class="progress">
+                    <div class="bar" id="kalderama-bar"></div>
+                </div>
+                <div class="status" id="kalderama-status">Normal Demand</div>
+                <div class="timer" id="kalderama-timer"></div>
+            </div>
+
+            <div class="card" id="hilton-card">
+                <h3>Hilton</h3>
+                <div class="count" id="hilton-count">0 / 40</div>
+                <div class="sub">Confirmed orders</div>
+                <div class="progress">
+                    <div class="bar" id="hilton-bar"></div>
+                </div>
+                <div class="status" id="hilton-status">Normal Demand</div>
+                <div class="timer" id="hilton-timer"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Updates automatically • High-demand threshold: 40 orders
+        </div>
+    </main>
+
+    <script>
+        const STORAGE_KEY = "unicanteenCanteenOrderCounts";
+        const LIMIT = 40;
+
+        function getCounts() {
+            try {
+                return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+            } catch {
+                return {};
+            }
+        }
+
+        function updateCard(canteen, id) {
+            const data = getCounts()[canteen] || { count: 0, resetAt: null };
+
+            const count = Number(data.count) || 0;
+            const resetAt = Number(data.resetAt) || 0;
+            const expired = resetAt && Date.now() >= resetAt;
+            const highDemand = count >= LIMIT && resetAt > Date.now();
+
+            const displayCount = expired ? 0 : count;
+
+            document.getElementById(id + "-count").textContent =
+                displayCount + " / " + LIMIT;
+
+            document.getElementById(id + "-bar").style.width =
+                Math.min(displayCount / LIMIT * 100, 100) + "%";
+
+            const status = document.getElementById(id + "-status");
+            const timer = document.getElementById(id + "-timer");
+
+            if (highDemand) {
+                status.textContent = "HIGH DEMAND";
+                status.className = "status high";
+                timer.textContent = "Reset in " + Math.ceil((resetAt - Date.now()) / 60000) + " min";
+            } else {
+                status.textContent = "Normal Demand";
+                status.className = "status";
+                timer.textContent = "";
+            }
+        }
+
+        function updateDashboard() {
+            updateCard("Kalderama", "kalderama");
+            updateCard("Hilton", "hilton");
+        }
+
+        updateDashboard();
+        setInterval(updateDashboard, 1000);
+
+        window.addEventListener("storage", updateDashboard);
+    </script>
+</body>
+</html>

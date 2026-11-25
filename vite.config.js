@@ -13,6 +13,7 @@ export default defineConfig({
         cart: resolve(process.cwd(), 'cart.html'),
         checkout: resolve(process.cwd(), 'checkout.html'),
         confirmation: resolve(process.cwd(), 'confirmation.html'),
+        orderCount: resolve(process.cwd(), 'order-count.html'),
       },
     },
   },
