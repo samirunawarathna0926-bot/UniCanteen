@@ -280,7 +280,7 @@ document.querySelectorAll(
 
 // 5. CONFIRM ORDER BUTTON
 
-confirmButton.addEventListener("click", function() {
+confirmButton.addEventListener("click", async function() {
 
     updateConfirmButton();
 
@@ -378,6 +378,8 @@ const paymentName =
 
     // Save confirmed order
 
+    confirmButton.disabled = true;
+
     try {
 
         localStorage.setItem(
@@ -386,7 +388,7 @@ const paymentName =
         );
 
         // Update canteen demand counters
-        recordCanteenOrders(order.items);
+        await recordCanteenOrders(order.items, order.reference);
 
         // Clear shopping cart only after saving
 
@@ -407,6 +409,7 @@ const paymentName =
         );
 
         console.error(error);
+        updateConfirmButton();
 
     }
 
