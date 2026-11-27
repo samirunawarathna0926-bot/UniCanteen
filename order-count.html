@@ -169,7 +169,7 @@
             <div class="card" id="kalderama-card">
                 <h3>Kalderama</h3>
                 <div class="count" id="kalderama-count">0 / 40</div>
-                <div class="sub">Confirmed orders</div>
+                <div class="sub">Confirmed orders in the last 10 minutes</div>
                 <div class="progress">
                     <div class="bar" id="kalderama-bar"></div>
                 </div>
@@ -180,7 +180,7 @@
             <div class="card" id="hilton-card">
                 <h3>Hilton</h3>
                 <div class="count" id="hilton-count">0 / 40</div>
-                <div class="sub">Confirmed orders</div>
+                <div class="sub">Confirmed orders in the last 10 minutes</div>
                 <div class="progress">
                     <div class="bar" id="hilton-bar"></div>
                 </div>
@@ -190,62 +190,11 @@
         </div>
 
         <div class="footer">
-            Updates automatically • High-demand threshold: 40 orders
+            Updates automatically • Threshold: 40 orders in the last 10 minutes • Counts are local to this browser
         </div>
     </main>
 
-    <script>
-        const STORAGE_KEY = "unicanteenCanteenOrderCounts";
-        const LIMIT = 40;
-
-        function getCounts() {
-            try {
-                return JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-            } catch {
-                return {};
-            }
-        }
-
-        function updateCard(canteen, id) {
-            const data = getCounts()[canteen] || { count: 0, resetAt: null };
-
-            const count = Number(data.count) || 0;
-            const resetAt = Number(data.resetAt) || 0;
-            const expired = resetAt && Date.now() >= resetAt;
-            const highDemand = count >= LIMIT && resetAt > Date.now();
-
-            const displayCount = expired ? 0 : count;
-
-            document.getElementById(id + "-count").textContent =
-                displayCount + " / " + LIMIT;
-
-            document.getElementById(id + "-bar").style.width =
-                Math.min(displayCount / LIMIT * 100, 100) + "%";
-
-            const status = document.getElementById(id + "-status");
-            const timer = document.getElementById(id + "-timer");
-
-            if (highDemand) {
-                status.textContent = "HIGH DEMAND";
-                status.className = "status high";
-                timer.textContent = "Reset in " + Math.ceil((resetAt - Date.now()) / 60000) + " min";
-            } else {
-                status.textContent = "Normal Demand";
-                status.className = "status";
-                timer.textContent = "";
-            }
-        }
-
-        function updateDashboard() {
-            updateCard("Kalderama", "kalderama");
-            updateCard("Hilton", "hilton");
-        }
-
-        updateDashboard();
-        setInterval(updateDashboard, 1000);
-
-        window.addEventListener("storage", updateDashboard);
-    </script>
+    <script type="module" src="/src/order-monitor.js"></script>
 <script type="module" src="/src/cart-count.js"></script>
 <script type="module" src="/src/mobile-nav.js"></script>
 </body>

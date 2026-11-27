@@ -1,3 +1,4 @@
+import { outletNames, outletMenus } from "./outlet-menus.js";
 
 // Get the information from the URL
 const params = new URLSearchParams(window.location.search);
@@ -10,7 +11,8 @@ const selectedCanteen = params.get("canteen");
 const canteenNames = {
     "kalderama": "Kalderama",
     "hilton": "Hilton",
-    "off-campus": "Other Food Outlets"
+    "off-campus": "Other Food Outlets",
+    ...outletNames
 };
 
 // Find the heading on the Menu page
@@ -23,92 +25,288 @@ if (canteenNames[selectedCanteen]) {
     canteenTitle.textContent = "Explore Our Menu";
 }
 // Prices of optional extras
-const extraPrices = {
-    egg: 80,
-    fish: 150
-};
+const extraPrices = selectedCanteen === "kalderama"
+    ? { egg: 40, fish: 60, chicken: 75 }
+    : { egg: 80, fish: 150 };
 
 // ==================================
 // UNICANTEEN - SAMPLE FOOD DATABASE
 // ==================================
 
 const foodData = {
+    ...outletMenus,
 
     kalderama: {
-        categories: ["Rice", "Short Eats", "Beverages", "Kottu"],
-
-        meals: [
+        "categories": [
+            "Rice & Curry",
+            "Roti & Parata",
+            "Short Eats & Other",
+            "Beverages",
+            "Fried Rice",
+            "Kottu"
+        ],
+        "meals": [
             {
-                id: 1,
-                name: "Egg Rice",
-                category: "Rice",
-                price: 350,
-                image: "https://placehold.co/400x300?text=Egg+Rice",
-                available: true,
-                extras: ["egg", "fish", "chicken"]
+                "id": 201,
+                "name": "Vegetable Rice & Curry",
+                "category": "Rice & Curry",
+                "price": 100,
+                "image": "/images/food/vegetable-rice.webp",
+                "available": true,
+                "extras": ["egg", "fish", "chicken"],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 100
+                    },
+                    {
+                        "label": "Full",
+                        "price": 140
+                    }
+                ]
             },
             {
-                id: 2,
-                name: "Fish Rice",
-                category: "Rice",
-                price: 400,
-                image: "https://placehold.co/400x300?text=Fish+Rice",
-                available: true,
-                extras: ["egg", "fish", "chicken"]
+                "id": 202,
+                "name": "Egg Rice & Curry",
+                "category": "Rice & Curry",
+                "price": 140,
+                "image": "/images/food/egg-rice.webp",
+                "available": true,
+                "extras": ["egg", "fish", "chicken"],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 140
+                    },
+                    {
+                        "label": "Full",
+                        "price": 180
+                    }
+                ]
             },
             {
-                id: 3,
-                name: "Chicken Rice",
-                category: "Rice",
-                price: 450,
-                image: "https://placehold.co/400x300?text=Chicken+Rice",
-                available: true,
-                extras: ["egg", "fish", "chicken"]
+                "id": 203,
+                "name": "Fish Rice & Curry",
+                "category": "Rice & Curry",
+                "price": 160,
+                "image": "/images/food/fish-rice.webp",
+                "available": true,
+                "extras": ["egg", "fish", "chicken"],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 160
+                    },
+                    {
+                        "label": "Full",
+                        "price": 200
+                    }
+                ]
             },
             {
-                id: 4,
-                name: "Fish Roll",
-                category: "Short Eats",
-                price: 80,
-                image: "/images/egg roll.jpg",
-                available: true,
-                extras: []
+                "id": 204,
+                "name": "Chicken Rice & Curry",
+                "category": "Rice & Curry",
+                "price": 175,
+                "image": "/images/food/chicken-rice.webp",
+                "available": true,
+                "extras": ["egg", "fish", "chicken"],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 175
+                    },
+                    {
+                        "label": "Full",
+                        "price": 215
+                    }
+                ]
             },
             {
-                id: 5,
-                name: "Vegetable Roti",
-                category: "Short Eats",
-                price: 50,
-                image: "https://placehold.co/400x300?text=Vegetable+Roti",
-                available: true,
-                extras: []
+                "id": 205,
+                "name": "Egg Omelette Rice & Curry",
+                "category": "Rice & Curry",
+                "price": 165,
+                "image": "/images/menu-placeholder.svg",
+                "available": true,
+                "extras": ["egg", "fish", "chicken"],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 165
+                    },
+                    {
+                        "label": "Full",
+                        "price": 195
+                    }
+                ]
             },
             {
-                id: 6,
-                name: "Fresh Lime Juice",
-                category: "Beverages",
-                price: 180,
-                image: "https://placehold.co/400x300?text=Lime+Juice",
-                available: true,
-                extras: []
+                "id": 206,
+                "name": "Parata",
+                "category": "Roti & Parata",
+                "price": 50,
+                "image": "/images/menu-placeholder.svg",
+                "available": true,
+                "extras": []
             },
             {
-                id: 7,
-                name: "Chicken Kottu",
-                category: "Kottu",
-                price: 550,
-                image: "https://placehold.co/400x300?text=Chicken+Kottu",
-                available: true,
-                extras: []
+                "id": 207,
+                "name": "Egg Roti",
+                "category": "Roti & Parata",
+                "price": 80,
+                "image": "/images/menu-placeholder.svg",
+                "available": true,
+                "extras": []
             },
             {
-                id: 8,
-                name: "Egg Kottu",
-                category: "Kottu",
-                price: 450,
-                image: "https://placehold.co/400x300?text=Egg+Kottu",
-                available: true,
-                extras: []
+                "id": 208,
+                "name": "Vegetable Roti",
+                "category": "Roti & Parata",
+                "price": 60,
+                "image": "/images/food/vegetable-roti.webp",
+                "available": true,
+                "extras": []
+            },
+            {
+                "id": 209,
+                "name": "Rolls",
+                "category": "Short Eats & Other",
+                "price": 50,
+                "image": "/images/food/roll.webp",
+                "available": true,
+                "extras": []
+            },
+            {
+                "id": 210,
+                "name": "Dhal Wade",
+                "category": "Short Eats & Other",
+                "price": 25,
+                "image": "/images/food/dhal-wade.webp",
+                "available": true,
+                "extras": []
+            },
+            {
+                "id": 211,
+                "name": "Ulundu Wade",
+                "category": "Short Eats & Other",
+                "price": 40,
+                "image": "/images/menu-placeholder.svg",
+                "available": true,
+                "extras": []
+            },
+            {
+                "id": 212,
+                "name": "Thosai with Curry",
+                "category": "Short Eats & Other",
+                "price": 50,
+                "image": "/images/menu-placeholder.svg",
+                "available": true,
+                "extras": []
+            },
+            {
+                "id": 213,
+                "name": "Fruit Juice",
+                "category": "Beverages",
+                "price": 60,
+                "image": "/images/menu-placeholder.svg",
+                "available": true,
+                "extras": []
+            },
+            {
+                "id": 214,
+                "name": "Vegetable Fried Rice",
+                "category": "Fried Rice",
+                "price": 250,
+                "image": "/images/menu-placeholder.svg",
+                "available": true,
+                "extras": [],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 250
+                    },
+                    {
+                        "label": "Full",
+                        "price": 350
+                    }
+                ]
+            },
+            {
+                "id": 215,
+                "name": "Egg Fried Rice",
+                "category": "Fried Rice",
+                "price": 300,
+                "image": "/images/menu-placeholder.svg",
+                "available": true,
+                "extras": [],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 300
+                    },
+                    {
+                        "label": "Full",
+                        "price": 400
+                    }
+                ]
+            },
+            {
+                "id": 216,
+                "name": "Chicken Fried Rice",
+                "category": "Fried Rice",
+                "price": 400,
+                "image": "/images/food/chicken-fried-rice.webp",
+                "available": true,
+                "extras": [],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 400
+                    },
+                    {
+                        "label": "Full",
+                        "price": 500
+                    }
+                ]
+            },
+            {
+                "id": 217,
+                "name": "Egg Kottu",
+                "category": "Kottu",
+                "price": 350,
+                "image": "/images/egg-kottu2-min.jpg",
+                "available": true,
+                "extras": [],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 350
+                    },
+                    {
+                        "label": "Full",
+                        "price": 500
+                    }
+                ]
+            },
+            {
+                "id": 218,
+                "name": "Chicken Kottu",
+                "category": "Kottu",
+                "price": 400,
+                "image": "/images/food/chicken-kottu.webp",
+                "available": true,
+                "extras": [],
+                "portions": [
+                    {
+                        "label": "Half",
+                        "price": 400
+                    },
+                    {
+                        "label": "Full",
+                        "price": 550
+                    }
+                ]
             }
         ]
     },
@@ -122,7 +320,7 @@ const foodData = {
                 name: "Egg Rice",
                 category: "Rice",
                 price: 380,
-                image: "https://placehold.co/400x300?text=Egg+Rice",
+                image: "/images/food/egg-rice.webp",
                 available: true,
                 extras: ["egg", "fish", "chicken"]
             },
@@ -131,7 +329,7 @@ const foodData = {
                 name: "Fish Rice",
                 category: "Rice",
                 price: 430,
-                image: "https://placehold.co/400x300?text=Fish+Rice",
+                image: "/images/food/fish-rice.webp",
                 available: true,
                 extras: ["egg", "fish", "chicken"]
             },
@@ -140,7 +338,7 @@ const foodData = {
                 name: "Chicken Rice",
                 category: "Rice",
                 price: 480,
-                image: "https://placehold.co/400x300?text=Chicken+Rice",
+                image: "/images/food/chicken-rice.webp",
                 available: true,
                 extras: ["egg", "fish", "chicken"]
             },
@@ -149,7 +347,7 @@ const foodData = {
                 name: "Fish Roll",
                 category: "Short Eats",
                 price: 110,
-                image: "https://placehold.co/400x300?text=Fish+Roll",
+                image: "/images/food/roll.webp",
                 available: true,
                 extras: []
             },
@@ -158,7 +356,7 @@ const foodData = {
                 name: "Chicken Patty",
                 category: "Short Eats",
                 price: 120,
-                image: "https://placehold.co/400x300?text=Chicken+Patty",
+                image: "/images/food/patties.webp",
                 available: true,
                 extras: []
             },
@@ -167,7 +365,7 @@ const foodData = {
                 name: "Iced Coffee",
                 category: "Beverages",
                 price: 220,
-                image: "https://placehold.co/400x300?text=Iced+Coffee",
+                image: "/images/menu-placeholder.svg",
                 available: true,
                 extras: []
             }
@@ -182,11 +380,24 @@ const foodData = {
 const categoryContainer = document.querySelector("#category-container");
 const menuContainer = document.querySelector("#menu-container");
 
+menuContainer.classList.toggle("campus-menu", ["kalderama", "hilton"].includes(selectedCanteen));
+
 // Get the selected canteen's food data
 const currentMenu = foodData[selectedCanteen];
+if (currentMenu) {
+    const note = document.createElement("p");
+    note.className = "menu-photo-note";
+    note.textContent = "Food images are illustrative; actual meals may vary.";
+    menuContainer.before(note);
+}
 
 // Check whether the selected canteen has sample menu data
-if (currentMenu) {
+if (selectedCanteen === "off-campus") {
+    document.querySelector("#outlet-container").innerHTML = `<div class="canteen-grid">${Object.entries(outletNames).map(([slug, name]) => `<article class="canteen-card"><div class="canteen-icon">🍽️</div><p class="canteen-type">OFF-CAMPUS</p><h3>${name}</h3><a class="canteen-button" href="/menu.html?canteen=${slug}">View Menu →</a></article>`).join("")}</div>`;
+} else if (currentMenu) {
+    if (Object.hasOwn(outletNames, selectedCanteen)) {
+        document.querySelector("#outlet-container").innerHTML = '<a class="outlet-back" href="/menu.html?canteen=off-campus">← All food outlets</a>';
+    }
 
     // Display the categories
     function displayCategories() {
@@ -216,7 +427,9 @@ function displayMeals(category) {
 
             <img
                 src="${meal.image}"
-                alt="${meal.name}"
+                alt="${meal.name} (illustrative image)"
+                loading="lazy"
+                decoding="async"
                 class="meal-image"
             >
 
@@ -224,6 +437,8 @@ function displayMeals(category) {
 
                 <h3>${meal.name}</h3>
 
+                ${meal.portions ? `<label class="portion-label">Choose ${meal.category === "Cold Drinks" ? "size" : "portion"}
+                    <select class="portion-select">${meal.portions.map((part, index) => `<option value="${index}" data-price="${part.price}">${part.label} — LKR ${part.price}</option>`).join("")}</select></label>` : ""}
                 <p class="meal-price">
                     Base price: LKR ${meal.price.toFixed(2)}
                 </p>
@@ -239,7 +454,7 @@ function displayMeals(category) {
                         <p><strong>Add extra items</strong></p>
 
                         ${meal.extras
-                            .filter(extra => extra === "egg" || extra === "fish")
+                            .filter(extra => Object.hasOwn(extraPrices, extra))
                             .map(extra => `
                                 <label class="extra-option">
 
@@ -291,20 +506,22 @@ function displayMeals(category) {
     // Update price when extra quantities change
     menuContainer.oninput = function(event) {
 
-        if (!event.target.classList.contains("extra-quantity")) {
+        if (!event.target.matches(".extra-quantity, .portion-select")) {
             return;
         }
 
         const quantityInput = event.target;
 
         // Allow only non-negative whole numbers
-        if (quantityInput.value === "" || Number(quantityInput.value) < 0) {
+        if (quantityInput.matches(".extra-quantity") && (quantityInput.value === "" || Number(quantityInput.value) < 0)) {
             quantityInput.value = 0;
         }
 
         const mealCard = quantityInput.closest(".meal-card");
 
-        const basePrice = Number(mealCard.dataset.basePrice);
+        const portionSelect = mealCard.querySelector(".portion-select");
+        const basePrice = portionSelect ? Number(portionSelect.selectedOptions[0].dataset.price) : Number(mealCard.dataset.basePrice);
+        mealCard.querySelector(".meal-price").textContent = "Base price: LKR " + basePrice.toFixed(2);
 
         const extraInputs = mealCard.querySelectorAll(".extra-quantity");
 
@@ -322,6 +539,8 @@ function displayMeals(category) {
         mealCard.querySelector(".total-price").textContent =
             "LKR " + totalPrice.toFixed(2);
     };
+
+    menuContainer.onchange = menuContainer.oninput;
 
     // Add selected meal to cart
     menuContainer.onclick = function(event) {
@@ -374,11 +593,17 @@ function displayMeals(category) {
             localStorage.getItem("unicanteenCart") || "[]"
         );
 
+        const portionSelect = mealCard.querySelector(".portion-select");
+        const portion = portionSelect ? meal.portions[Number(portionSelect.value)] : null;
+        const basePrice = portion ? portion.price : meal.price;
         cart.push({
             canteen: canteenNames[selectedCanteen],
             mealId: meal.id,
-            mealName: meal.name,
-            basePrice: meal.price,
+            mealName: portion ? `${meal.name} (${portion.label})` : meal.name,
+            portion: portion?.label || null,
+            hasExtras: meal.extras.length > 0,
+            extraOptions: meal.extras.filter(extra => Object.hasOwn(extraPrices, extra)),
+            basePrice: basePrice,
             extras: selectedExtras,
             quantity: 1,
             totalPrice: totalPrice

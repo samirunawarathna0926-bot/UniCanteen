@@ -4,10 +4,19 @@
 // ==================================
 
 // Prices of optional extras
-const extraPrices = {
-    egg: 80,
-    fish: 150
-};
+function getExtraPrices(item) {
+    return item.canteen === "Kalderama"
+        ? { egg: 40, fish: 60, chicken: 75 }
+        : { egg: 80, fish: 150 };
+}
+
+function getExtraOptions(item) {
+    if (item.hasExtras === false) return [];
+    if (item.canteen === "Kalderama" && !/Rice & Curry/i.test(item.mealName)) return [];
+    if (!item.hasExtras && !(item.extras || []).length && !(["Kalderama", "Hilton"].includes(item.canteen) && /rice/i.test(item.mealName))) return [];
+    const prices = getExtraPrices(item);
+    return (item.extraOptions || Object.keys(prices)).filter(extra => Object.hasOwn(prices, extra));
+}
 
 // Get cart from browser storage
 function getCart() {
@@ -82,52 +91,19 @@ function displayCart() {
         const oneMealPrice = calculateMealPrice(item);
         const itemTotal = oneMealPrice * item.quantity;
 
-        // Show editable extras only for rice meals
-        const hasExtras =
-            item.hasExtras ||
-            /rice/i.test(item.mealName) ||
-            (item.extras || []).length > 0;
-
-        const extrasHTML = hasExtras ? `
-
+        const extraOptions = getExtraOptions(item);
+        const prices = getExtraPrices(item);
+        const extrasHTML = extraOptions.length ? `
             <div class="cart-extras">
-
                 <p><strong>Customize your extras</strong></p>
-
-                <div class="cart-extra-control">
-
-                    <label>Extra Egg (LKR 80 each)</label>
-
-                    <input
-                        type="number"
-                        class="cart-extra-quantity"
-                        data-index="${index}"
-                        data-extra="egg"
-                        min="0"
-                        step="1"
-                        value="${getExtraQuantity(item, "egg")}"
-                    >
-
-                </div>
-
-                <div class="cart-extra-control">
-
-                    <label>Extra Fish (LKR 150 each)</label>
-
-                    <input
-                        type="number"
-                        class="cart-extra-quantity"
-                        data-index="${index}"
-                        data-extra="fish"
-                        min="0"
-                        step="1"
-                        value="${getExtraQuantity(item, "fish")}"
-                    >
-
-                </div>
-
+                ${extraOptions.map(extra => `
+                    <div class="cart-extra-control">
+                        <label>Extra ${extra.charAt(0).toUpperCase() + extra.slice(1)} (LKR ${prices[extra]} each)</label>
+                        <input type="number" class="cart-extra-quantity" data-index="${index}"
+                            data-extra="${extra}" min="0" step="1" value="${getExtraQuantity(item, extra)}">
+                    </div>
+                `).join("")}
             </div>
-
         ` : `<p class="cart-extra">No extra items</p>`;
 
         return `
@@ -233,7 +209,7 @@ document.querySelector("#cart-container").addEventListener("change", function(ev
 
     const item = cart[index];
 
-    if (!item) return;
+    if (!item || !getExtraOptions(item).includes(extraName)) return;
 
     // Remove the old quantity of this extra
     item.extras = (item.extras || []).filter(
@@ -246,7 +222,7 @@ document.querySelector("#cart-container").addEventListener("change", function(ev
         item.extras.push({
             name: "Extra " + extraName.charAt(0).toUpperCase() + extraName.slice(1),
             quantity: quantity,
-            unitPrice: extraPrices[extraName]
+            unitPrice: getExtraPrices(item)[extraName]
         });
 
     }

@@ -1434,3 +1434,24 @@ textarea {
     .form-group input { font-size: 16px; }
     .confirmation-row strong, .confirmation-item, .order-reference { overflow-wrap: anywhere; }
 }
+
+/* Outlet menus and portion selection */
+.outlet-back { display: inline-block; margin: 12px 0; color: #174d36; font-weight: 600; }
+.portion-label { display: block; font-weight: 600; margin: 10px 0; }
+.portion-select { display: block; width: 100%; min-height: 44px; padding: 8px; margin-top: 6px; border: 1px solid #23865b; border-radius: 8px; background: white; color: #202b24; font: inherit; font-size: 16px; }
+#outlet-container .canteen-grid { margin-top: 24px; }
+#outlet-container .canteen-card h3 { font-family: "Noto Sans Sinhala", "Iskoola Pota", sans-serif; }
+#canteen-title, .cart-canteen { font-family: "Noto Sans Sinhala", "Iskoola Pota", sans-serif; }
+
+/* Consistent outlet-specific grid */
+@media (min-width: 1001px) {
+    #menu-container { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+    #menu-container.campus-menu { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 601px) and (max-width: 1000px) {
+    #menu-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.meal-card { min-width: 0; width: 100%; }
+.meal-details h3 { overflow-wrap: anywhere; }
+
+.menu-photo-note { font-size: 0.85rem; color: #52645a; margin: 0 0 12px; }
